@@ -1,0 +1,88 @@
+<!-- Login Popup form -->
+<div id="loginPopup" class="popup-form">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('loginPopup')">&times;</span>
+    <h2>Đăng nhập</h2>
+    <form id="loginForm" method="POST" action="">
+      <label for="login-nickname">Nickname:</label>
+      <input type="text" id="login-nickname" name="nickname" required />
+      <label for="login-password">Mật khẩu:</label>
+      <input type="password" id="login-password" name="password" required />
+      <a href="./forgot-password" class="forgot-password">Quên mật khẩu?</a>
+      <button type="submit" class="login-button">Đăng nhập</button>
+      <p class="register-link">Bạn chưa có tài khoản?
+        <a href="./register" onclick="switchToRegister()">Hãy đăng ký</a></p>
+    </form>
+  </div>
+</div>
+
+<body>
+    <!-- Nội dung khác -->
+
+    {{#if errorMessage}}
+        <!-- Modal thông báo lỗi -->
+        <div class="modal" tabindex="-1" role="dialog" id="errorModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Thông báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{errorMessage}}</p>
+                    </div>
+                    <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='/login'">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+
+    <!-- Thêm Bootstrap JS và jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            {{#if errorMessage}}
+                $('#errorModal').modal('show');
+            {{/if}}
+        });
+    </script>
+</body>
+<script>
+  function openRegisterPopup() {
+    document.getElementById('registerPopup').style.display = 'block';
+  }
+
+  function openLoginPopup() {
+    document.getElementById('loginPopup').style.display = 'block';
+  }
+
+  function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+  }
+
+  function switchToRegister() {
+    closePopup('loginPopup');
+    openRegisterPopup();
+  }
+
+  function switchToLogin() {
+    closePopup('registerPopup');
+    openLoginPopup();
+  }
+
+  // Tự động mở popup đăng ký nếu đường dẫn là /register
+window.onload = function () {
+    const path = window.location.pathname;
+    if (path === '/register') {
+      openRegisterPopup();
+    } else if (path === '/login') {
+      openLoginPopup();
+    }
+  };
+</script>

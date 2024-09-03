@@ -1,0 +1,126 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #6a0dad;
+  color: white;
+  padding: 10px;
+}
+
+button {
+  border-radius: 20px;
+}
+
+.home-button {
+  background-color: #00a000;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.user-info {
+  position: relative;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logout {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff6f6;
+  color: black;
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.user-info:hover .logout {
+  display: block;
+}
+
+.logout:hover {
+  background-color: #ccc;
+  color: red;
+}
+
+form {
+  margin-bottom: 30px;
+  padding: 40px 40px;
+}
+
+form label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+form input[type=text],
+form input[type=number] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.btn-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6A0DAD;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-upload:hover {
+  background-color: #5a0c9b;
+}
+
+.real-estate-list {
+  margin-top: 30px;
+}
+
+.real-estate-item {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.real-estate-item img {
+  width: 150px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+/*# sourceMappingURL=aminManager.css.map */

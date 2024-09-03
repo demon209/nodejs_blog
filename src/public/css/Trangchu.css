@@ -1,0 +1,445 @@
+@charset "UTF-8";
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* HEADER */
+header {
+  background-color: #6200EA;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky !important;
+  top: 0;
+}
+
+.left-header {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.right-header {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.header-button:hover {
+  background-color: #45a049;
+}
+
+/* MAIN */
+main {
+  padding: 20px;
+}
+
+.search-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-title-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.filter-button {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.filter-button:hover {
+  background-color: #d5d5d5;
+}
+
+.property-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.property {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 30%;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.property img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.property h3 {
+  font-size: 1.2em;
+  margin: 0 0 10px;
+}
+
+.property p {
+  margin: 5px 0;
+}
+
+/* Popup form styles */
+.popup-form {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-button,
+.login-button,
+.register-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.login-button {
+  background-color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+
+.register-button {
+  background-color: #f44336;
+}
+
+.register-button:hover {
+  background-color: #da190b;
+}
+
+.forgot-password {
+  text-align: right;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.forgot-password a {
+  color: #009688;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.register-link {
+  text-align: center;
+}
+
+.register-link a {
+  color: #009688;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #cac9c9;
+  color: #333;
+  padding: 10px;
+  text-align: left;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-left, .footer-right {
+  width: 48%;
+  text-align: center;
+}
+
+.footer-right {
+  text-align: center;
+}
+
+.footer-right p {
+  margin: 5px 0;
+}
+
+.footer-left p, .footer-bottom p {
+  margin: 5px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  text-align: center;
+  position: left;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #333;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 40px;
+}
+
+.social-icons a:hover {
+  color: #6200EA;
+}
+
+.fa {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+/* nút giá */
+.price-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.price-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* nút vị trí */
+.location-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.location-dropdown .dropdown-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.location-dropdown .dropdown-button:hover {
+  background-color: #ddd;
+  color: white;
+}
+
+.location-dropdown .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.location-dropdown .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.location-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.location-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  max-height: 300px; /* Chiều cao tối đa của menu trước khi xuất hiện thanh cuộn */
+  overflow-y: auto; /* Thêm thanh cuộn dọc khi danh sách quá dài */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+/* Loại hình */
+.property-type-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.property-type-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.property-type-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.property-type-dropdown .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.property-type-dropdown .dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.property-type-dropdown .filter-button {
+  background-color: #4CAF50; /* Màu xanh ban đầu */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s, color 0.3s; /* Thêm hiệu ứng chuyển đổi màu */
+}
+
+.property-type-dropdown .filter-button:hover {
+  background-color: #ddd; /* Màu trắng khi di chuột đến */
+  color: white; /* Đổi màu chữ thành màu xanh */
+}
+
+.property-type-dropdown .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 5px;
+}
+
+.property-type-dropdown .dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.popup-form {
+  display: none; /* Ẩn popup theo mặc định */
+  /* Các thuộc tính CSS khác của bạn */
+}
+
+/*# sourceMappingURL=Trangchu.css.map */

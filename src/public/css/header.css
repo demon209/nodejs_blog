@@ -1,0 +1,60 @@
+@charset "UTF-8";
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* HEADER */
+header {
+  background-color: #241d17;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.left-header {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+.right-header-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.header-button {
+  background-color: rgba(68, 51, 29, 0.9843137255);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.header-button:hover {
+  background-color: white;
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+}
+
+/* MAIN và các phần khác vẫn giữ nguyên */
+body {
+  height: 4000px;
+}
+
+/*# sourceMappingURL=header.css.map */

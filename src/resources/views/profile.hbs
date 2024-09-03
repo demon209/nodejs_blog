@@ -1,0 +1,336 @@
+<style>
+  /* Thiết lập cơ bản */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+/* Style cho form */
+form {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 50px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Style cho modal */
+.modal-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
+.modal-footer button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.modal-footer .btn-danger {
+    background-color: #dc3545;
+}
+
+.modal-footer .btn-danger:hover {
+    background-color: #c82333;
+}
+/* CSS cho nút Đổi mật khẩu */
+.changePassword {    
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    background-color: #28a745; /* Màu nền xanh lá */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 20px; /* Khoảng cách bên trong nút */
+    border: none; /* Loại bỏ viền */
+    border-radius: 5px; /* Bo tròn các góc */
+    font-size: 16px; /* Cỡ chữ */
+    cursor: pointer; /* Con trỏ chuột hiển thị khi hover */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
+    margin-left: 75%;
+    width: 350px;
+
+}
+
+.changePassword:hover {
+    background-color: #218838; /* Màu nền khi hover */
+}
+
+.changePassword:focus {
+    outline: none; /* Loại bỏ viền khi nút được chọn */
+}
+
+
+</style>
+
+<h2>Thông tin cá nhân người dùng:</h2>
+<form action="/profile/{{user._id}}?_method=PUT" method="POST">
+  <label for="fullname">Họ và tên: </label>
+  <input type="text" value="{{user.fullname}}" id="tenUser" name="fullname" required />
+
+  <label for="nickname">Tên tài khoản: </label>
+  <p>{{user.nickname}}</p>
+  <label for="phone">Số điện thoại:</label>
+  <input type="text" value="{{user.phone}}" id="Phone" name="phone" required />
+  <label for="email">Email:</label>
+  <input type="text" value="{{user.email}}" id="Email" name="email" required />
+  
+  <!-- Nút cập nhật thông tin -->
+  <button type="submit">Cập nhật</button>
+
+  <!-- Nút xóa tài khoản -->
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteusermodal" data-id="{{user._id}}">
+    Xóa tài khoản
+  </button>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div id="deleteusermodal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa Tài Khoản?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc chắn muốn xóa tài khoản?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-delete-user" class="btn btn-danger">Xóa</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+<body>
+<!-- Nút mở popup đổi mật khẩu -->
+<button type="button" class="btn btn-primary changePassword" data-toggle="modal" data-target="#changePasswordModal">
+  Đổi mật khẩu
+</button>
+
+<!-- Modal đổi mật khẩu -->
+<div id="changePasswordModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Đổi Mật Khẩu</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="changePasswordForm" method="POST" action="/profile/change-password">
+          <div class="form-group">
+            <label for="oldPassword">Mật khẩu cũ</label>
+            <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
+          </div>
+          <div class="form-group">
+            <label for="newPassword">Mật khẩu mới</label>
+            <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmNewPassword">Xác nhận mật khẩu mới</label>
+            <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="submit" form="changePasswordForm" class="btn btn-primary">Lưu thay đổi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Nội dung khác -->
+
+    {{#if errorMessage}}
+        <!-- Modal thông báo lỗi -->
+        <div class="modal" tabindex="-1" role="dialog" id="errorModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Thông báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{errorMessage}}</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='/login'">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+{{#if Message}}
+    <!-- Modal thông báo -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Thông báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>{{Message}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='/profile'">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script>
+        $(document).ready(function() {
+            $('#errorModal').modal('show');
+        });
+    </script>
+{{/if}}
+{{#if successMessage}}
+    <!-- Modal thông báo -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Thông báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>{{successMessage}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='/login'">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#errorModal').modal('show');
+        });
+    </script>
+{{/if}}
+
+    <!-- Thêm Bootstrap JS và jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            {{#if errorMessage}}
+                $('#errorModal').modal('show');
+            {{/if}}
+        });
+        $('#closeModalButton').on('click', function() {
+              window.location.href = '/trangchu'; // Chuyển hướng về trang chủ
+        });
+    </script>
+</body>
+<form name="delete_user" method="POST"></form>
+
+<script>
+$(document).ready(function() {
+  var Userid;
+  var deleteForm = document.forms['delete_user'];
+  var btnDeleteUser = document.getElementById('btn-delete-user');
+
+  $('#deleteusermodal').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget); // Nút đã kích hoạt modal
+    Userid = button.data('id'); // Lấy ID từ data-id 
+  });
+
+  btnDeleteUser.onclick = function() {
+    if (Userid) {
+      deleteForm.action = '/profile/' + Userid + '?_method=DELETE';
+      deleteForm.submit(); // Gửi form khi nhấn nút Delete
+    } else {
+      console.error('Không tìm thấy ID');
+    }
+  };
+});
+</script>

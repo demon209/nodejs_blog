@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #6a0dad;
+    color: white;
+    padding: 10px;
+}
+
+button {
+    border-radius: 20px;
+}
+
+.home-button {
+    background-color: #00a000;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.user-info {
+    position: relative;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logout {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff6f6;
+    color: black;
+    padding: 10px 40px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.user-info:hover .logout {
+    display: block;
+}
+
+.logout:hover{
+    background-color: #ccc;
+    color: red ;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+}
+
+.profile-section {
+    width: 30%;
+    text-align: center;
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-info p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.customer-button {
+    background-color: #00a000;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-section {
+    width: 70%;
+}
+
+.form-section h2 {
+    margin-top: 0;
+}
+
+.form-section label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.form-section input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.save-button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+
+.post-button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}

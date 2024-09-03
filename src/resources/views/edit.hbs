@@ -1,0 +1,55 @@
+<form action="/edit/{{data._id}}?_method=PUT" method="POST">
+  <label for="name">Tên Bất động sản:</label>
+  <input type="text" value="{{data.name}}" id="tenBDS" name="name" required />
+
+  <label for="detail">Mô tả bất động sản:</label>
+  <textarea id="description" name="detail" required>{{data.detail}}</textarea>
+
+  <label for="location">Địa chỉ bất động sản:</label>
+  <input
+    type="text"
+    value="{{data.location}}"
+    id="diaChiBDS"
+    name="location"
+    required
+  />
+
+  <label for="price">Giá bất động sản (VNĐ):</label>
+  <input type="text" value="{{data.price}}" id="giaBDS" name="price" required />
+
+  <label for="S">Diện tích bất động sản (m<sup>2</sup>):</label>
+  <input type="text" value="{{data.S}}" id="dienTichBDS" name="S" required />
+
+  <label for="name_person">Người đăng:</label>
+  <input
+    type="text"
+    value="{{data.name_person}}"
+    id="moTaBDS"
+    name="name_person"
+    required
+  />
+
+  <label for="contact">Liên hệ:</label>
+  <input
+    type="text"
+    value="{{data.contact}}"
+    id="diaChiBDS"
+    name="contact"
+    required
+  />
+
+  {{!-- <label for="image">Thêm hình ảnh của Bất động sản:</label>
+          <input type="file" value="{{data.image}}"  id="images" name="image" multiple required />
+
+          <label for="additionalImages">Thêm ảnh bổ sung:</label>
+          <input
+            type="file"
+            id="additionalImages"
+            name="additionalImages"
+            multiple
+          /> --}}
+
+<div style="text-align: center;">
+  <button style="background-color: rgb(19, 110, 162); color:#fff; width:20%;margin-bottom:20px;" type="submit">Lưu</button>
+</div>
+</form>

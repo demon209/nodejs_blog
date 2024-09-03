@@ -1,0 +1,206 @@
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Đăng bất động sản</title>
+    <style>
+      /* CSS cho nút mở pop-up */
+      .open-button { 
+        background-color: #4CAF50;
+        color: white; 
+        padding: 10px 15px; 
+        border: none; 
+        cursor: pointer;
+        position: right;
+        border-radius: 20px;
+        position: absolute; /* Hoặc sử dụng position: fixed nếu bạn muốn nút giữ vị trí khi cuộn trang */
+        right: 30px; /* Căn lề phải, có thể điều chỉnh giá trị này tùy theo nhu cầu */
+         } /* CSS
+      cho pop-up */ 
+
+      .popup-form { 
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        left:0; 
+        overflow: auto; /* Cho phép cuộn dọc */
+        width: 67%; 
+        height: 67%; 
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center; 
+        align-items: center; 
+        z-index: 1000;
+        } /* Nội dung của pop-up */
+        .form-container { 
+          background-color: white; 
+          padding: 20px; 
+          border-radius:5px; 
+          max-width: 500px; 
+          width: 100%; } 
+          .form-container input,.form-container label, .form-container button {
+             width: 100%;
+             margin-bottom: 10px; } /* CSS cho nút đóng pop-up */ 
+             .close-button {
+                background-color: #f44336; color: white; padding: 10px 15px; border: none;
+                  cursor: pointer; }
+          .CVA {
+            margin-bottom: 30px;
+          }
+    </style>
+  </head>
+  <body>
+    <!-- Nút mở pop-up -->
+    <button class="open-button" onclick="openForm()">Đăng Bất động sản</button>
+    <!-- Pop-up form -->
+    <div class="popup-form" id="popupForm">
+      <div class="form-container">
+        <form
+          action="/adminManager"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <label for="name">Tên Bất động sản:</label>
+          <input type="text" id="tenBDS" name="name" required />
+          <label for="type">Loại hình bất động sản:</label>
+          <select id="type" name="type" required>
+            <option value="">--Chọn loại hình--</option>
+            <option value="Nhà đất">Nhà đất</option>
+            <option value="Chung cư">Chung cư</option>
+            <option value="Cho thuê">Cho thuê</option>
+          </select>
+
+          <label for="detail">Mô tả bất động sản:</label>
+          <textarea id="description" name="detail" required></textarea>
+
+          <label for="location">Địa chỉ bất động sản:</label>
+          <input type="text" id="diaChiBDS" name="location" required />
+
+          <label for="price">Giá bất động sản (VNĐ):</label>
+          <input type="text" id="giaBDS" name="price" required />
+
+          <label for="S">Diện tích bất động sản (m<sup>2</sup>):</label>
+          <input type="text" id="dienTichBDS" name="S" required />
+
+          <label for="name_person">Người đăng:</label>
+          <input type="text" id="moTaBDS" name="name_person" required />
+
+          <label for="contact">Liên hệ:</label>
+          <input type="text" id="diaChiBDS" name="contact" required />
+
+          <label for="image">Thêm hình ảnh của Bất động sản:</label>
+          <input type="file" id="images" name="image" multiple required />
+
+          <label for="additionalImages">Thêm ảnh bổ sung:</label>
+          <input
+            type="file"
+            id="additionalImages"
+            name="additionalImages"
+            multiple
+          />
+
+          <button type="submit">Thêm bất động sản</button>
+           <button class="close-button" onclick="closeForm()">Đóng</button>
+        </form>
+      </div>
+
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class='CVA'scope="col">#</th>
+          <th class='CVA'scope="col">Tên Bất Động Sản</th>
+          <th class='CVA'scope="col">Địa Chỉ Bất Động Sản</th>
+          <th class='CVA'scope="col">Người Đăng</th>
+          <th class='CVA'scope="col">Liên Hệ</th>
+          <th class='CVA'scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+          <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <!-- Sử dụng {{@index}} để hiển thị số thứ tự -->
+            <td>{{this.name}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.name_person}}</td>
+            <td>{{this.contact}}</td>
+            <td>
+              <a href="/edit/{{this._id}}" class="btn btn-link">Sửa</a>
+              <a
+                href=""
+                class="btn btn-link"
+                data-toggle="modal"
+                data-id="{{this._id}}"
+                data-target="#deleteBDSmodal"
+              >Xóa</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <script>
+      function openForm() { document.getElementById("popupForm").style.display =
+      "flex"; } function closeForm() {
+      document.getElementById("popupForm").style.display = "none"; }
+
+    </script>
+  </body>
+</html>
+
+{{! delete course }}
+
+<div id="deleteBDSmodal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa bất động sản?</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc chắn muốn xóa bất động sản?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="btn-delete-bds"
+          class="btn btn-danger"
+        >Đồng ý </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >Hủy bỏ</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{! delete hidden form }}
+<form name="delete_bds" method="POST"></form>
+<script>
+
+  $(document).ready(function() { var bdsid; var deleteForm =
+  document.forms['delete_bds']; var btnDeleteBDS =
+  document.getElementById('btn-delete-bds');
+  $('#deleteBDSmodal').on('show.bs.modal', function (event) { var button =
+  $(event.relatedTarget); // Nút đã kích hoạt modal 
+  bdsid = button.data('id');
+  // Lấy ID từ data-id 
+  }); 
+  btnDeleteBDS.onclick = function() { if (bdsid) {
+  deleteForm.action = '/adminManager/' + bdsid + '?_method=DELETE';
+  deleteForm.submit(); // Gửi form khi nhấn nút Delete 
+  } 
+  else {
+  console.error('Không tìm thấy ID của bất động sản'); } }; }); ;
+
+</script>

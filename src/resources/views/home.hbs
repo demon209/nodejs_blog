@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Bất Động Sản</title>
+    <!-- Thêm CSS Bootstrap và các CSS khác tại đây -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Home.css">
+    <link rel="stylesheet" href="/font/themify-icons/themify-icons.css">
+    <style>
+        /* CSS tùy chỉnh nếu cần */
+    .search-section {
+        padding: 20px 0;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 20px;
+        position: relative;
+        top: 0;
+        z-index: 1000;
+        width: 100%; /* Chiếm toàn bộ chiều ngang màn hình */
+    }
+
+    .search-section .container {
+        width: 100%; /* Loại bỏ giới hạn về chiều rộng */
+        padding: 0; /* Loại bỏ padding nếu có */
+        max-width: 100%; /* Đảm bảo chiếm toàn bộ chiều rộng */
+    }
+        .container-fluid{
+            padding-left: 0%;
+            padding-right: 0%;
+        }
+        .search-title-filter h2 {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card-img-top {
+            width: 100%; /* Chiều rộng 100% để phù hợp với thẻ card */
+            height: 10px; /* Chiều cao cố định */
+            object-fit: cover; /* Đảm bảo ảnh không bị biến dạng và được cắt cúp */
+        }
+        .card-body {
+            flex: 1; /* Đảm bảo nội dung card chiếm hết chiều cao còn lại */
+        }
+    </style>
+<body>
+    <header class="search-section">
+        <div class="container-fluid">
+            <div class="search-title-filter text-center">
+                <h1 style="margin-left:10%;">Tìm Kiếm Bất Động Sản</h1>
+                <form method="POST" action="/trangchu">
+                    <input type="hidden" name="page" value="{{currentPage}}">
+                    <div style="margin-right: 5%;" class="row">
+                        <div class="col-md-4 mb-3">
+                            <select name="Location_value" class="form-control">
+                            <option value="">--Chọn Vị Trí--</option>
+                            <option value="Ba Đình" >Ba Đình</option>
+                            <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+                            <option value="Tây Hồ">Tây Hồ</option>
+                            <option value="Long Biên" >Long Biên</option>
+                            <option value="Cầu Giấy " >Cầu Giấy</a>
+                            <option value="Đống Đa" >Đống Đa</option>
+                            <option value="Hai Bà Trưng" >Hai Bà Trưng</option>
+                            <option value="Hoàng Mai">Hoàng Mai</option>
+                            <option value="Thanh Xuân">Thanh Xuân</option>
+                            <option value="Hà Đông">Hà Đông</option>
+                            <option value="Nam Từ Liêm">Nam Từ Liêm</option>
+                            <option value="Bắc Từ Liêm">Bắc Từ Liêm</option>
+                            <option value="Đông Anh">Đông Anh</option>
+                            <option value="Sóc Sơn">Sóc Sơn</option>
+                            <option value="Gia Lâm">Gia Lâm</option>
+                            <option value="Mê Linh">Mê Linh</option>
+                            <option value="Thanh Trì">Thanh Trì</option>
+                            <option value="Chương Mỹ">Chương Mỹ</option>
+                            <option value="Thường Tín">Thường Tín</option>
+                            <option value="Phú Xuyên">Phú Xuyên</option>
+                            <option value="Ứng Hòa">Ứng Hòa</option>
+                            <option value="Mỹ Đức">Mỹ Đức</option>
+                            <option value="Thanh Oai">Thanh Oai</option>
+                            <option value="Ba Vì">Ba Vì</option>
+                            <option value="Phúc Thọ">Phúc Thọ</option>
+                            <option value="Đan Phượng">Đan Phượng</option>
+                            <option value="Hoài Đức">Hoài Đức</option>
+                            <option value="Quốc Oai">Quốc Oai</option>
+                            <option value="Thạch Thất">Thạch Thất</option>
+                            <option value="Sơn Tây">Sơn Tây</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <select name="Price_value" class="form-control">
+                            <option value="" >--Chọn Giá--</option>
+                            <option value="1">0 - 1 tỷ</option>
+                            <option value="2">1 - 5 tỷ</option>
+                            <option value="3">trên 5 tỷ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <select name="Type_value" class="form-control">
+                            <option value="">--Chọn loại hình--</option>
+                            <option value="Nhà đất">Nhà đất</option>
+                            <option value="Chung cư">Chung cư</option>
+                            <option value="Cho thuê">Cho thuê</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button style="margin-right:5% ;" type="submit" class="btn btn-success">Tìm Kiếm</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+<main class="container">
+    <h2 style="background-color: #dee2e6;width:35%;margin-bottom:20px;">Danh sách bất động sản</h2>
+        <div class="row">
+            {{#if data.length}}
+                {{#each data}}
+                    <div class="col-sm-6 col-lg-4">
+                        <section class="property-list">
+                            <article class="property card mb-4" style="width: 18rem;">
+                                <img src="{{this.image}}" class="card-img-top" alt="Bất động sản">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.name}}</h5>
+                                    <p class="card-text">Loại hình: {{this.type}}</p>
+                                    <p class="card-text">Địa điểm: {{this.location}}</p>
+                                    {{!-- <p class="card-text">Giá: {{this.price}} VND</p> --}}
+                                    {{!-- <p class="card-text">Diện tích: {{this.S}} m²</p> --}}
+                                    <a href="/bds/{{this._id}}" class="btn btn-primary">Chi tiết</a>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                {{/each}}
+        
+                {{else}}
+                <div class="text-center">
+                    <h3 style="font-weight: normal; color: red;background-color:#dee2e6;">Opps!!!,không tìm thấy bất động sản phù hợp.</h3>
+                    <img src="/img/khbds.png" alt="Không tìm thấy bất động sản phù hợp" style="max-width: 100%; height: auto;">
+                    
+                </div>
+                {{/if}}
+                
+        </div>
+
+        <!-- Phân trang -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {{#if (gt currentPage 1)}}
+                <li class="page-item">
+                    <form method="POST" action="/trangchu" style="display: inline;">
+                        <input type="hidden" name="page" value="{{subtract currentPage 1}}">
+                        <button class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </button>
+                    </form>
+                </li>
+                {{/if}}
+
+                {{#each (range 1 totalPages)}}
+                <li class="page-item {{#if (eq this ../currentPage)}}active{{/if}}">
+                    <form method="POST" action="/trangchu" style="display: inline;">
+                        <input type="hidden" name="page" value="{{this}}">
+                        <button class="page-link">{{this}}</button>
+                    </form>
+                </li>
+                {{/each}}
+
+                {{#if (lt currentPage totalPages)}}
+                <li class="page-item">
+                    <form method="POST" action="/trangchu" style="display: inline;">
+                        <input type="hidden" name="page" value="{{add currentPage 1}}">
+                        <button class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </button>
+                    </form>
+                </li>
+                {{/if}}
+            </ul>
+        </nav>
+    </main>
+        <div class="fixed-buttons">
+        <a href="tel:+84901234567" class="hotline-button" title="Hotline">
+            <i class="ti-headphone-alt"></i>
+        </a>
+        <a href="https://zalo.me/yourzaloid" class="zalo-button" title="Zalo">
+            <i class="ti-comments"></i>
+        </a>
+    </div>
+
+    <!-- Thêm JS Bootstrap và các JS khác tại đây -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+</body>
+</html>

@@ -1,0 +1,66 @@
+ADMINMANAGER
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, path.join(__dirname, 'public','img')); // Đảm bảo thư mục tồn tại
+  },
+  filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// app.post('/adminManager', upload.fields([
+//   { name: 'image', maxCount: 10 }, // Ảnh chính
+//   { name: 'additionalImages', maxCount: 10 } // Ảnh bổ sung
+// ]), (req, res) => {
+//   const formData = req.body;
+
+//   // Xử lý đường dẫn của ảnh chính
+//   formData.image = req.files['image'] ? req.files['image'].map(file => '/img/' + file.filename) : [];
+
+//   // Xử lý đường dẫn của ảnh bổ sung
+//   formData.additionalImages = req.files['additionalImages'] ? req.files['additionalImages'].map(file => '/img/' + file.filename) : [];
+
+//   const bds = new Bds(formData);
+//   bds.save()
+//   .then(() => res.json({ success: true, message: 'Bất động sản đã được thêm thành công!' }))
+//   .catch(error => res.status(400).json({ success: false, message: 'Đã xảy ra lỗi: ' + error.message }));
+
+// });
+
+// app.get('/adminManager', async (req, res) => { // Chỉ định đường dẫn URL '/adminManager'
+//   try {
+//     const data = await Bds.find({}).lean(); // Lấy dữ liệu từ Bds
+//     res.render("adminManager", { data }); // Render template 'adminManager' với dữ liệu lấy được
+//   } catch (err) {
+//     res.status(400).json({ error: err.message }); // Xử lý lỗi nếu có
+//   }
+// });
+
+EDIT 
+// app.get('/edit/:id', async (req, res) => {
+//   try {
+//     const data = await Bds.findById(req.params.id).lean(); // Lấy dữ liệu cụ thể theo ID
+//     res.render("edit", { data }); // Truyền dữ liệu vào template
+//   } catch (err) {
+//     res.status(400).json({ error: err.message }); // Xử lý lỗi nếu có
+//   }
+// });
+
+// app.put('/edit/:id', async (req, res) => {
+//       Bds.updateOne({_id: req.params.id }, req.body)
+//       .then(()=>res.redirect('/adminManager'))
+// });
+
+
+// app.delete('/adminManager/:id', async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     await Bds.findByIdAndDelete(id); // Xóa bất động sản khỏi cơ sở dữ liệu
+//     res.redirect('/adminManager'); // Chuyển hướng lại trang quản lý
+//   } catch (error) {
+//     res.status(500).send('Không thể xóa bất động sản');
+//   }
+// });

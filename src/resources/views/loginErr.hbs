@@ -1,0 +1,60 @@
+<div id="loginFailedPopup" class="popup-form">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('loginFailedPopup')">&times;</span>
+    <p class="error-message">Đăng nhập thất bại: Sai nickname hoặc mật khẩu không đúng.</p>
+    <p class="register-link">Quay lại trang
+    <a href="./login" onclick="switchToLogin()"> Đăng nhập</a></p>
+  </div>
+</div>
+
+<script>
+
+  function openRegisterPopup() {
+    document.getElementById('registerPopup').style.display = 'block';
+  }
+
+  function openLoginPopup() {
+    document.getElementById('loginPopup').style.display = 'block';
+  }
+
+  function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+  }
+
+  function switchToRegister() {
+    closePopup('loginPopup');
+    openRegisterPopup();
+  }
+
+  function switchToLogin() {
+    closePopup('registerPopup');
+    openLoginPopup();
+  }
+
+  // Tự động mở popup đăng ký nếu đường dẫn là /register
+window.onload = function () {
+    const path = window.location.pathname;
+    if (path === '/register') {
+      openRegisterPopup();
+    } else if (path === '/login') {
+      openLoginPopup();
+    }
+  };
+
+  function openLoginFailedPopup() {
+    document.getElementById('loginFailedPopup').style.display = 'block';
+  }
+
+  function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+  }
+
+  // Tự động mở popup thông báo lỗi nếu đường dẫn là /loginErr
+  window.onload = function () {
+    const path = window.location.pathname;
+    if (path === '/loginErr') {
+      openLoginFailedPopup();
+    }
+  };
+</script>
+
