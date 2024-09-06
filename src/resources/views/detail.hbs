@@ -71,7 +71,7 @@ h3{
 <p>Diện tích: {{data.S}} m²</p>
 <p>Chi tiết: {{data.detail}}</p>
 <p>Người đăng: {{data.name_person}}</p>
-<p>Liên hệ: {{data.contact}}</p>
+<p>Liên hệ trực tiếp: <a href="tel:{{data.contact}}">{{data.contact}}</a></p>
 <h3>Ảnh bổ sung:</h3>
 <div class="additional-images">
     {{#each data.additionalImages}}
