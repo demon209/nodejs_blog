@@ -147,40 +147,51 @@
         </div>
 
         <!-- Phân trang -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                {{#if (gt currentPage 1)}}
-                <li class="page-item">
-                    <form method="POST" action="/trangchu" style="display: inline;">
-                        <input type="hidden" name="page" value="{{subtract currentPage 1}}">
-                        <button class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </button>
-                    </form>
-                </li>
-                {{/if}}
+<!-- Phân trang -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        {{#if (gt currentPage 1)}}
+        <li class="page-item">
+            <form method="POST" action="/trangchu" style="display: inline;">
+                <input type="hidden" name="page" value="{{subtract currentPage 1}}">
+                <input type="hidden" name="Location_value" value="{{Location_value}}">
+                <input type="hidden" name="Price_value" value="{{Price_value}}">
+                <input type="hidden" name="Type_value" value="{{Type_value}}">
+                <button class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </form>
+        </li>
+        {{/if}}
 
-                {{#each (range 1 totalPages)}}
-                <li class="page-item {{#if (eq this ../currentPage)}}active{{/if}}">
-                    <form method="POST" action="/trangchu" style="display: inline;">
-                        <input type="hidden" name="page" value="{{this}}">
-                        <button class="page-link">{{this}}</button>
-                    </form>
-                </li>
-                {{/each}}
+        {{#each (range 1 totalPages)}}
+        <li class="page-item {{#if (eq this ../currentPage)}}active{{/if}}">
+            <form method="POST" action="/trangchu" style="display: inline;">
+                <input type="hidden" name="page" value="{{this}}">
+                <input type="hidden" name="Location_value" value="{{../Location_value}}">
+                <input type="hidden" name="Price_value" value="{{../Price_value}}">
+                <input type="hidden" name="Type_value" value="{{../Type_value}}">
+                <button class="page-link">{{this}}</button>
+            </form>
+        </li>
+        {{/each}}
 
-                {{#if (lt currentPage totalPages)}}
-                <li class="page-item">
-                    <form method="POST" action="/trangchu" style="display: inline;">
-                        <input type="hidden" name="page" value="{{add currentPage 1}}">
-                        <button class="page-link" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </button>
-                    </form>
-                </li>
-                {{/if}}
-            </ul>
-        </nav>
+        {{#if (lt currentPage totalPages)}}
+        <li class="page-item">
+            <form method="POST" action="/trangchu" style="display: inline;">
+                <input type="hidden" name="page" value="{{add currentPage 1}}">
+                <input type="hidden" name="Location_value" value="{{Location_value}}">
+                <input type="hidden" name="Price_value" value="{{Price_value}}">
+                <input type="hidden" name="Type_value" value="{{Type_value}}">
+                <button class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </form>
+        </li>
+        {{/if}}
+    </ul>
+</nav>
+
     </main>
         <div class="fixed-buttons">
         <a href="https://www.facebook.com/VuAnhQuan1509/" class="hotline-button" title="Hotline">
