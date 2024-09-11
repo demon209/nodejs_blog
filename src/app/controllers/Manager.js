@@ -27,7 +27,7 @@ class Manager {
     try {
       const bds = new Bds(formData);
       await bds.save();
-      res.redirect("/adminManager");
+      res.redirect("/adminManager?message=Bấtđộngsảnđãđượclưuthànhcông.");
     } catch (error) {
       res
         .status(400)

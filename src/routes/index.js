@@ -48,6 +48,10 @@ function route(app) {
 
   app.post("/adminManager", ManagersRouter);
   app.get('/adminManager',ManagersRouter)
+  app.get('/adminManager', (req, res) => {
+    const successMessage = req.query.message;
+    res.render('adminManager', { successMessage });
+  });
 
   
   app.get('/edit/:id',EditRouter)
